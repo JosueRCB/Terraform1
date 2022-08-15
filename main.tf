@@ -1,28 +1,24 @@
 terraform {
   required_providers {
     docker = {
-      source  = "kreuzwerker/docker"
-      version = ">= 2.13.0"
-    }
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.16"
+      source = "kreuzwerker/docker"
+      version = "~> 2.15.0"
     }
   }
 }
 
 provider "docker" {}
 
-resource "docker_image" "juan" {
+resource "docker_image" "nginx" {
   name         = "nginx:latest"
   keep_locally = false
 }
 
 resource "docker_container" "nginx" {
   image = docker_image.nginx.latest
-  name  = "josue"
+  name  = "josue"   
   ports {
     internal = 80
-    external = 84
+    external = 84  
   }
 }
