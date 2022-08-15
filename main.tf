@@ -11,9 +11,7 @@ terraform {
   }
 }
 
-provider "docker" {
-  host    = "npipe:////.//pipe//docker_engine"
-}
+provider "docker" {}
 
 resource "docker_image" "juan" {
   name         = "nginx:latest"
